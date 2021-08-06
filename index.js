@@ -64,13 +64,12 @@ app.put('/api/persons/:id', (request, response, next) => {
     const body = request.body
 
     const person = {
-        name: body.name,
         number: body.number,
     }
 
-    Person.findByIdAndUpdate(req.params.id, person, { new: true })
+    Person.findByIdAndUpdate(request.params.id, person, { new: true })
         .then(updatePerson => {
-            res.json(updatePerson)
+            response.json(updatePerson)
         })
         .catch(error => next(error))
 })
@@ -81,10 +80,6 @@ app.post('/api/persons', (req, res) => {
 
     if (!body.name || !body.number) {
         return res.status(400).send('content missing')
-    }
-
-    if (Person.find(person => person.name === body.name)) {
-        return res.status(400).send('name already exists')
     }
 
     const person = new Person({
