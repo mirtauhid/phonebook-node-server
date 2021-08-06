@@ -4,14 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node server",
     "dev": "nodemon index.js",
     "build": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:ui": "rm -rf build && cd ../../fullstack-open/part2/phonebook && npm run build --prod && cp -r build ../../../fullstack-open-backend-servers/phonebook-backend",
     "deploy": "git push heroku tempbranch",
     "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push && npm run deploy",
-    "logs:prod": "heroku logs --tail"
+    "logs:prod": "heroku logs --tail",
+    "heroku-postbuild": "cd client/ && npm install && npm run build"
   },
   "keywords": [],
   "author": "",
