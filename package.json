@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "build": "webpack",
+    "build": "react-script build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:ui": "rm -rf build && cd ../../fullstack-open/part2/phonebook && npm run build --prod && cp -r build ../../../fullstack-open-backend-servers/phonebook-node-server",
     "deploy": "git push heroku master",
